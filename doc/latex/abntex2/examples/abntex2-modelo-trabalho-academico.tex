@@ -1,4 +1,4 @@
-%% abtex2-modelo-trabalho-academico.tex, v<VERSION> laurocesar
+
 %% Copyright 2012-<COPYRIGHT_YEAR> by abnTeX2 group at http://www.abntex.net.br/ 
 %%
 %% This work may be distributed and/or modified under the
@@ -69,11 +69,11 @@
 % ---
 \usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
 \usepackage[alf]{abntex2cite}	% Citações padrão ABNT
-
+\usepackage[brazil]{babel}
 % --- 
 % CONFIGURAÇÕES DE PACOTES
 % --- 
-
+\setlength{\headheight}{30pt}
 % ---
 % Configurações do pacote backref
 % Usado sem a opção hyperpageref de backref
@@ -90,6 +90,8 @@
 		Citado #1 vezes nas páginas #2.%
 	\fi}%
 % ---
+
+
 
 % ---
 % Informações de dados para CAPA e FOLHA DE ROSTO
@@ -183,6 +185,28 @@ as normas ABNT apresentado à comunidade de usuários \LaTeX.}
 \makeindex
 % ---
 
+% Evita erro do hyperef \uppercase{}
+\makeatletter
+\renewcommand{\PRIVATEapendiceconfig}[2]{%
+ \setboolean{abntex@apendiceousecao}{true}%
+ \renewcommand{\appendixname}{#1}
+ \ifthenelse{\boolean{ABNTEXsumario-abnt-6027-2012}}{%
+   \renewcommand{\appendixtocname}{\texorpdfstring{\MakeTextUppercase{#2}}{#2}}%
+ }{%
+   \renewcommand{\appendixtocname}{#2}%
+ }%
+ \renewcommand{\appendixpagename}{#2}%
+ \switchchapname{#1}%
+ \renewcommand*{\cftappendixname}{#1 \space}%
+}
+\makeatother
+
+\overfullrule=5pt
+\tolerance=1000
+\emergencystretch=3em
+\hyphenpenalty=500
+\hbadness=10000
+\sloppy
 % ----
 % Início do documento
 % ----
@@ -233,13 +257,13 @@ as normas ABNT apresentado à comunidade de usuários \LaTeX.}
 	\sffamily
 	\vspace*{\fill}					% Posição vertical
 	\begin{center}					% Minipage Centralizado
-	\fbox{\begin{minipage}[c][8cm]{13.5cm}		% Largura
+	\fbox{\begin{minipage}[c][8cm]{16.5cm}		% Largura
 	\small
 	\imprimirautor
 	%Sobrenome, Nome do autor
 	
-	\hspace{0.5cm} \imprimirtitulo  / \imprimirautor. --
-	\imprimirlocal, \imprimirdata-
+	\hspace{0.5cm} \imprimirtitulo\\  / \imprimirautor. --
+	\imprimirlocal,\\ \imprimirdata-\\
 	
 	\hspace{0.5cm} \thelastpage p. : il. (algumas color.) ; 30 cm.\\
 	
@@ -249,15 +273,15 @@ as normas ABNT apresentado à comunidade de usuários \LaTeX.}
 	\parbox[t]{\textwidth}{\imprimirtipotrabalho~--~\imprimirinstituicao,
 	\imprimirdata.}\\
 	
-	\hspace{0.5cm}
-		1. Palavra-chave1.
-		2. Palavra-chave2.
-		2. Palavra-chave3.
-		I. Orientador.
-		II. Universidade xxx.
-		III. Faculdade de xxx.
-		IV. Título 			
-	\end{minipage}}
+		\hspace{0.5cm}
+			1. Palavra-chave1.
+			2. Palavra-chave2.
+			2. Palavra-chave3.
+			I. Orientador.
+			II. Universidade xxx.
+			III. Faculdade de xxx.
+			IV. Título 			
+		\end{minipage}}
 	\end{center}
 \end{fichacatalografica}
 % ---
@@ -675,13 +699,15 @@ elementum}
 % ---
 % Inicia os apêndices
 % ---
+
 \begin{apendicesenv}
 
 % Imprime uma página indicando o início dos apêndices
 \partapendices
 
+\phantomsection
 % ----------------------------------------------------------
-\chapter{Quisque libero justo}
+\chapter[quisque libero justo]{qwesr}
 % ----------------------------------------------------------
 
 \lipsum[50]
@@ -709,7 +735,7 @@ ac pretium ante justo a nulla curabitur tristique arcu eu metus}
 \partanexos
 
 % ---
-\chapter{Morbi ultrices rutrum lorem.}
+\chapter{morbi ultrices rutrum lorem}
 % ---
 \lipsum[30]
 

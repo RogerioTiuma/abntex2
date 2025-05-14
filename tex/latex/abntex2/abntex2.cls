@@ -890,7 +890,8 @@
  \setboolean{abntex@apendiceousecao}{true}%
  \renewcommand{\appendixname}{#1}
  \ifthenelse{\boolean{ABNTEXsumario-abnt-6027-2012}}{
-   \renewcommand{\appendixtocname}{\uppercase{#2}}
+   %\renewcommand{\appendixtocname}{\uppercase{#2}}
+  \renewcommand{\appendixtocname}{\texorpdfstring{\MakeTextUppercase{#2}}{#2}
   }{%
   \renewcommand{\appendixtocname}{#2}} 
  \renewcommand{\appendixpagename}{#2}

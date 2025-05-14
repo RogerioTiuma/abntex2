@@ -56,10 +56,11 @@ observar apenas o recuo \cite[5.3]{NBR10520:2002}.
 Use o ambiente assim:
 
 \begin{verbatim}
-\begin{citacao}
-As citações diretas, no texto, com mais de três linhas [...] deve-se observar
-apenas o recuo \cite[5.3]{NBR10520:2002}.
-\end{citacao}
+  \begin{citacao}
+    As citações diretas, no texto, com mais de três linhas [...] 
+    deve-se observar.
+    apenas o recuo \cite[5.3]{NBR10520:2002}.
+  \end{citacao}
 \end{verbatim}
 
 O ambiente \texttt{citacao} pode receber como parâmetro opcional um nome de
@@ -229,7 +230,7 @@ Photoshop\index{Adobe Photoshop}.
 \end{figure}
 
 % ---
-\subsection{Figuras em \emph{minipages}}
+\subsection[Figuras em minipages]{Figuras em \emph{minipages}}
 % ---
 
 \emph{Minipages} são usadas para inserir textos ou outros elementos em quadros
@@ -242,7 +243,7 @@ com tamanhos e posições controladas. Veja o exemplo da
   \begin{minipage}{0.4\textwidth}
     \centering
     \caption{Imagem 1 da minipage} \label{fig_minipage_imagem1}
-    \includegraphics[scale=0.9]{abntex2-modelo-img-marca.pdf}
+    \includegraphics[scale=0.8]{abntex2-modelo-img-marca.pdf}
     \legend{Fonte: Produzido pelos autores}
   \end{minipage}
   \hfill

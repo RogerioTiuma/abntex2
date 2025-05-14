@@ -1,0 +1,24 @@
+% Corrige temanhos de textos
+
+\overfullrule=5pt
+\tolerance=1000
+\emergencystretch=3em
+\hyphenpenalty=500
+\hbadness=10000
+\sloppy
+
+% Evita erro do hyperef \uppercase{}
+\makeatletter
+\renewcommand{\PRIVATEapendiceconfig}[2]{%
+ \setboolean{abntex@apendiceousecao}{true}%
+ \renewcommand{\appendixname}{#1}
+ \ifthenelse{\boolean{ABNTEXsumario-abnt-6027-2012}}{%
+   \renewcommand{\appendixtocname}{\texorpdfstring{\MakeTextUppercase{#2}}{#2}}%
+ }{%
+   \renewcommand{\appendixtocname}{#2}%
+ }%
+ \renewcommand{\appendixpagename}{#2}%
+ \switchchapname{#1}%
+ \renewcommand*{\cftappendixname}{#1 \space}%
+}
+\makeatother
